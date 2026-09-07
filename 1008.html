@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Little Memory Garden</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+
+    background:
+    linear-gradient(rgba(60, 20, 50, 0.35), rgba(20, 10, 40, 0.65)),
+    linear-gradient(135deg, #f7c8d8, #d9b8e8, #a8d8d0);
+}
+
+/* Tropical leaves */
+
+body::before {
+    content: "🌿";
+    position: fixed;
+    font-size: 180px;
+    left: -40px;
+    top: -30px;
+    opacity: 0.25;
+    transform: rotate(-20deg);
+    pointer-events: none;
+}
+
+body::after {
+    content: "🌴";
+    position: fixed;
+    font-size: 180px;
+    right: -30px;
+    bottom: -20px;
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+/* Main container */
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+/* Welcome */
+
+.welcome {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.small-text {
+    font-size: 16px;
+    letter-spacing: 3px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.4);
+}
+
+.subtitle {
+    font-size: 19px;
+    max-width: 600px;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* Puppy / kitten */
+
+.kitten {
+    font-size: 95px;
+    margin: 35px 0 25px;
+
+    animation:
+        appear 2.5s ease forwards,
+        float 3s ease-in-out infinite 2.5s;
+
+    opacity: 0;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0.2) translateY(40px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.15) translateY(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Buttons */
+
+.choice-area {
+    margin-top: 35px;
+
+    animation: buttonsAppear 2s ease forwards;
+    animation-delay: 3s;
+    opacity: 0;
+}
+
+@keyframes buttonsAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.choice {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+
+    padding: 18px 30px;
+    margin: 10px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 40px;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+
+    font-size: 17px;
+
+    transition: 0.4s;
+}
+
+.choice:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.25);
+}
+
+/* Content sections */
+
+section {
+    margin: 80px auto;
+    padding: 45px 30px;
+
+    border-radius: 30px;
+
+    background: rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.poem {
+    font-size: 19px;
+    line-height: 2;
+    font-style: italic;
+}
+
+/* Memory cards */
+
+.memories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.memory {
+    width: 250px;
+    min-height: 150px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+
+    transition: 0.4s;
+}
+
+.memory:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.2);
+}
+
+.memory h3 {
+    margin-bottom: 12px;
+}
+
+.memory p {
+    line-height: 1.6;
+}
+
+/* Final message */
+
+.final {
+    padding-bottom: 100px;
+}
+
+.heart {
+    font-size: 40px;
+    margin: 20px;
+}
+
+footer {
+    opacity: 0.7;
+    font-size: 14px;
+    padding-bottom: 30px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <div class="small-text">
+            SOMEWHERE BETWEEN THEN & NOW
+        </div>
+
+        <h1>
+            A Little Place<br>
+            Made of Memories
+        </h1>
+
+        <p class="subtitle">
+            Many little things happened in such a short time...
+            so I kept some of them here.
+        </p>
+
+        <!-- This appears suddenly -->
+
+        <div class="kitten">
+            🐱
+        </div>
+
+        <p class="subtitle">
+            "Some memories deserve their own little home."
+        </p>
+
+        <!-- Two choices -->
+
+<div class="choice-area">
+
+    <a href="going-in.html" class="choice">
+        ❤️ I'm Going In
+    </a>
+
+    <a href="going-out.html" class="choice">
+        💔 I'm Going Out
+    </a>
+
+</div>
+</div>
+
+
+    <!-- GOING IN -->
+
+    <section id="going-in">
+
+        <h2>
+            ❤️ Welcome Inside
+        </h2>
+
+        <p class="subtitle">
+            If you came this far,
+            maybe there is something here worth remembering.
+        </p>
+
+    </section>
+
+
+    <!-- POEMS -->
+
+    <section>
+
+        <h2>
+            🌺 Poems
+        </h2>
+
+        <div class="poem">
+
+            "There are moments<br>
+            that don't ask to stay,<br>
+            yet somehow<br>
+            they never really leave."
+
+            <br><br>
+
+            "And if tomorrow changes everything,<br>
+            let yesterday remain<br>
+            a beautiful place<br>
+            we once knew."
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMORIES -->
+
+    <section>
+
+        <h2>
+            🌴 Little Memories
+        </h2>
+
+        <div class="memories">
+
+            <div class="memory">
+
+                <h3>🌿 That Day</h3>
+
+                <p>
+                    Write something special
+                    that happened here.
+                </p>
+
+            </div>
+
+
+            <div class="memory">
+
+                <h3>☀️ That Moment</h3>
+
+                <p>
+                    A memory that you
+                    never want to forget.
+                </p>
+
+            </div>
+
+
+            <div class="memory">
+
+                <h3>🌙 That Night</h3>
+
+                <p>
+                    Something only
+                    the two of you remember.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL MESSAGE -->
+
+    <section class="final">
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <h2>
+            Before You Leave...
+        </h2>
+
+        <p class="subtitle">
+
+            Some people become memories.<br>
+            Some memories become a part of us.
+
+            <br><br>
+
+            Whatever happens next,
+            this little place will always
+            remember what once was.
+
+        </p>
+
+        <div class="heart">
+            🌺
+        </div>
+
+    </section>
+
+
+    <!-- GOING OUT -->
+
+    <section id="going-out">
+
+        <h2>
+            💔 It's Okay
+        </h2>
+
+        <p class="subtitle">
+
+            You don't have to go inside.
+
+            <br><br>
+
+            Some doors are meant to be opened
+            only when you're ready.
+
+        </p>
+
+    </section>
+
+
+    <footer>
+        Made from little memories ♡
+    </footer>
+
+</div>
+
+</body>
+</html>
